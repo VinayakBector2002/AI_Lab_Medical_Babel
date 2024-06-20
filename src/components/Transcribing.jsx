@@ -8,8 +8,8 @@ export default function Transcribing(props) {
         <div className='flex items-center flex-1 flex-col justify-center gap-10 md:gap-14 text-center pb-24 p-4'>
             <div className='flex flex-col gap-2 sm:gap-4'>
 
-                <h1 className='font-semibold text-4xl sm:text-5xl md:text-6xl'><span className='text-blue-400 bold'>Transcribing</span></h1>
-                <p>{!downloading ? 'warming up cylinders' : 'core cylinders engaged'}</p>
+            <h1 className='font-semibold text-5xl sm:text-6xl md:text-7xl'>Medical<span className='text-blue-400 bold'>Babel</span></h1>
+            <h3 className='font-medium md:text-lg'> {!downloading ? 'Step 3: Transcribing' : 'Step 3 Completed!'}  </h3>
             </div>
             <div className='flex flex-col gap-2 sm:gap-3 max-w-[400px] mx-auto w-full'>
                 {[0, 1, 2].map(val => {
