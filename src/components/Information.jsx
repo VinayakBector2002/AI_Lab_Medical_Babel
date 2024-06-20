@@ -53,7 +53,7 @@ export default function Information(props) {
         const element = document.createElement("a")
         const file = new Blob([textElement], { type: 'text/plain' })
         element.href = URL.createObjectURL(file)
-        element.download = `Freescribe_${new Date().toString()}.txt`
+        element.download = `MedicalBabel.txt`
         document.body.appendChild(element)
         element.click()
     }
@@ -72,7 +72,7 @@ export default function Information(props) {
         })
     }
 
-
+    const [currentText, setCurrentText] = useState(textElement)
 
 
     return (
@@ -90,9 +90,9 @@ export default function Information(props) {
                     </div>
                 )}
                 {tab === 'transcription' ? (
-                    <Transcription {...props} textElement={textElement} />
+                    <Transcription {...props} textElement={currentText} setTextElement={setCurrentText} />
                 ) : (
-                    <Translation {...props} toLanguage={toLanguage} translating={translating} textElement={textElement} setTranslating={setTranslating} setTranslation={setTranslation} setToLanguage={setToLanguage} generateTranslation={generateTranslation} />
+                    <Translation {...props} toLanguage={toLanguage} translating={translating} textElement={currentText} setTranslating={setTranslating} setTranslation={setTranslation} setToLanguage={setToLanguage} generateTranslation={generateTranslation} />
                 )}
             </div>
             <div className='flex items-center gap-4 mx-auto '>

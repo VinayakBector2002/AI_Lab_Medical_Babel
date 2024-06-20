@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import HomePage from './components/HomePage'
+import WelcomePage from './components/WelcomePage'
 import Header from './components/Header'
 import FileDisplay from './components/FileDisplay'
 import Information from './components/Information'
@@ -13,6 +14,7 @@ function App() {
   const [downloading, setDownloading] = useState(false)
   const [loading, setLoading] = useState(false)
   const [finished, setFinished] = useState(false)
+  const [showHomePage, setShowHomePage] = useState(false)
 
   const isAudioAvailable = file || audioStream
 
@@ -88,9 +90,11 @@ function App() {
           <Transcribing />
         ) : isAudioAvailable ? (
           <FileDisplay handleFormSubmission={handleFormSubmission} handleAudioReset={handleAudioReset} file={file} audioStream={audioStream} />
-        ) : (
-          <HomePage setFile={setFile} setAudioStream={setAudioStream} />
-        )}
+        ) : showHomePage ? (
+          <HomePage setFile={setFile} setAudioStream={setAudioStream} /> 
+        ) : 
+        <WelcomePage setShowHomePage={setShowHomePage}  />
+        }
       </section>
       <footer></footer>
     </div>
